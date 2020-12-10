@@ -72,6 +72,12 @@ class ContatoHelper {
     }
     return listaContato;
   }
+
+  updateContato(Contato contato) async {
+    Database dbContato = await db;
+    return await dbContato.update(tbContato, contato.toMap(),
+        where: "$idContato = ?", whereArgs: [contato.id]);
+  }
 }
 
 class Contato {
